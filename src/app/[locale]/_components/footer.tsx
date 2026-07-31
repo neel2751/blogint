@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { GitBranch, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 import { localeHref, appHref } from '@/lib/marketing-links';
 import { Logo } from './site-ui';
@@ -10,6 +10,8 @@ import { useMarketing } from './marketing-context';
 export function Footer() {
   const { locale } = useMarketing();
 
+  // Only pages that actually exist get linked here — no placeholder
+  // Developers column pointing at a page that doesn't cover that topic.
   const columns: Record<string, { label: string; href: string }[]> = {
     Product: [
       { label: 'Features', href: localeHref(locale, '/products') },
@@ -23,24 +25,18 @@ export function Footer() {
       { label: 'Sign in', href: appHref('/login') },
       { label: 'Get started', href: appHref('/signup') },
     ],
-    Developers: [
-      { label: 'Content API', href: localeHref(locale, '/products') },
-      { label: 'RSS & Atom feeds', href: localeHref(locale, '/products') },
-      { label: 'Sitemap', href: localeHref(locale, '/products') },
-      { label: 'Webhooks', href: localeHref(locale, '/products') },
-    ],
     Legal: [
-      { label: 'Privacy', href: localeHref(locale, '/resources') },
-      { label: 'Terms', href: localeHref(locale, '/resources') },
-      { label: 'Security', href: localeHref(locale, '/resources') },
-      { label: 'Status', href: localeHref(locale, '/resources') },
+      { label: 'Privacy', href: localeHref(locale, '/privacy') },
+      { label: 'Terms', href: localeHref(locale, '/terms') },
+      { label: 'Security', href: localeHref(locale, '/security') },
+      { label: 'Status', href: localeHref(locale, '/status') },
     ],
   };
 
   return (
     <footer className="bg-[#0f0d0c] px-5 pt-16 pb-8 text-white">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_repeat(4,1fr)]">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_repeat(3,1fr)]">
           <div>
             <Logo dark href={localeHref(locale)} />
             <p className="mt-4 max-w-xs text-sm text-white/50">
@@ -71,22 +67,8 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/40 sm:flex-row">
+        <div className="mt-14 border-t border-white/10 pt-6 text-center text-sm text-white/40">
           <p>© 2026 BlogInt. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href="#" className="transition-colors hover:text-white">
-              X
-            </a>
-            <a href="#" className="transition-colors hover:text-white">
-              LinkedIn
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-1 transition-colors hover:text-white"
-            >
-              <GitBranch className="size-3.5" /> GitHub
-            </a>
-          </div>
         </div>
       </div>
     </footer>
