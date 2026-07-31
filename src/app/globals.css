@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+/*
+ * Minimal design tokens for the marketing site. The pages use `primary`
+ * (BlogInt rust/orange) plus Tailwind's built-in neutral palette; everything
+ * else (backgrounds like #faf7f2) is set inline on the pages.
+ */
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: oklch(0.68 0.19 45);
+  --color-primary-foreground: oklch(0.99 0 0);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
