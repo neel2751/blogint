@@ -18,7 +18,7 @@ export default function AppleIcon() {
           background: BRAND.ink,
         }}
       >
-        <BrandMark size={92} color={BRAND.orange} />
+        <BrandMark height={108} color={BRAND.orange} />
       </div>
     ),
     { ...size }

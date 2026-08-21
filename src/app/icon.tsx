@@ -19,7 +19,7 @@ export default function Icon() {
           borderRadius: 6,
         }}
       >
-        <BrandMark size={16} color={BRAND.orange} />
+        <BrandMark height={20} color={BRAND.orange} />
       </div>
     ),
     { ...size }
