@@ -4,8 +4,25 @@ import Link from 'next/link';
 import { ShieldCheck } from 'lucide-react';
 
 import { localeHref, appHref } from '@/lib/marketing-links';
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  YoutubeIcon,
+} from '@/lib/social-icons';
 import { Logo } from './site-ui';
 import { useMarketing } from './marketing-context';
+
+const SOCIAL_LINKS = [
+  { label: 'YouTube', href: 'https://youtube.com/@bloglnt', Icon: YoutubeIcon },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61592718397503',
+    Icon: FacebookIcon,
+  },
+  { label: 'Instagram', href: 'https://www.instagram.com/bloglnt/', Icon: InstagramIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/blogint', Icon: LinkedinIcon },
+];
 
 export function Footer() {
   const { locale } = useMarketing();
@@ -47,6 +64,20 @@ export function Footer() {
               <span className="flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
                 <ShieldCheck className="size-3" /> 2FA &amp; account lockout
               </span>
+            </div>
+            <div className="mt-5 flex items-center gap-3">
+              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`BlogInt on ${label}`}
+                  className="flex size-8 items-center justify-center rounded-full bg-white/5 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <Icon className="size-4" />
+                </a>
+              ))}
             </div>
           </div>
           {Object.entries(columns).map(([col, links]) => (
