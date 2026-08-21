@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3001'),
   title: 'BlogInt — the headless multi-tenant blog CMS',
   description:
     'BlogInt is the headless, multi-tenant blog CMS for modern teams. Run every site, author, and content API from one dashboard — with a 14-day free trial.',
