@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Instrument_Serif } from 'next/font/google';
-import { Sparkles } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
+import { BrandMark } from '@/lib/brand-mark';
 
 /** Shared italic serif used for the emphasised part of marketing headings. */
 export const serif = Instrument_Serif({
@@ -77,9 +77,7 @@ export function Display({
 export function Logo({ dark, href = '/' }: { dark?: boolean; href?: string }) {
   return (
     <Link href={href} className="flex items-center gap-2">
-      <span className="bg-primary text-primary-foreground grid size-7 place-items-center rounded-md">
-        <Sparkles className="size-4" />
-      </span>
+      <BrandMark height={22} />
       <span
         className={cn(
           'text-lg font-semibold tracking-tight',
