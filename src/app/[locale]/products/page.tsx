@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import {
   Globe,
   PenLine,
@@ -134,7 +135,15 @@ export default async function ProductsPage({
               </ul>
             </div>
             <div className={i % 2 === 1 ? 'md:order-1' : ''}>
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-primary/15 to-neutral-900/80" />
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-primary/15 to-neutral-900/80">
+                <Image
+                  src="/screenshots/dashboard-preview.png"
+                  alt="The BlogInt dashboard"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>

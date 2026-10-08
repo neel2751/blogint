@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
 import { localeHref, appHref } from '@/lib/marketing-links';
 import { Logo } from './site-ui';
 import { RegionSwitcher } from './region-switcher';
@@ -19,6 +21,11 @@ const NAV = [
 export function Navbar() {
   const { locale } = useMarketing();
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (path: string) => {
+    const href = localeHref(locale, path);
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200/70 bg-[#faf7f2]/80 backdrop-blur">
@@ -29,7 +36,13 @@ export function Navbar() {
             <Link
               key={item.path}
               href={localeHref(locale, item.path)}
-              className="text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+              aria-current={isActive(item.path) ? 'page' : undefined}
+              className={cn(
+                'text-sm transition-colors',
+                isActive(item.path)
+                  ? 'font-medium text-neutral-900'
+                  : 'text-neutral-600 hover:text-neutral-900',
+              )}
             >
               {item.label}
             </Link>
@@ -66,7 +79,13 @@ export function Navbar() {
               key={item.path}
               href={localeHref(locale, item.path)}
               onClick={() => setOpen(false)}
-              className="rounded-md px-2 py-2 text-sm text-neutral-700 hover:bg-neutral-100"
+              aria-current={isActive(item.path) ? 'page' : undefined}
+              className={cn(
+                'rounded-md px-2 py-2 text-sm',
+                isActive(item.path)
+                  ? 'bg-neutral-100 font-medium text-neutral-900'
+                  : 'text-neutral-700 hover:bg-neutral-100',
+              )}
             >
               {item.label}
             </Link>
