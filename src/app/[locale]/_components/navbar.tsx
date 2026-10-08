@@ -40,7 +40,7 @@ export function Navbar() {
               className={cn(
                 'text-sm transition-colors',
                 isActive(item.path)
-                  ? 'font-medium text-neutral-900'
+                  ? 'text-primary font-medium'
                   : 'text-neutral-600 hover:text-neutral-900',
               )}
             >
@@ -83,7 +83,7 @@ export function Navbar() {
               className={cn(
                 'rounded-md px-2 py-2 text-sm',
                 isActive(item.path)
-                  ? 'bg-neutral-100 font-medium text-neutral-900'
+                  ? 'text-primary bg-neutral-100 font-medium'
                   : 'text-neutral-700 hover:bg-neutral-100',
               )}
             >

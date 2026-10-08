@@ -28,31 +28,31 @@ const RESOURCES = [
     icon: <BookOpen className="size-5" />,
     title: 'Documentation',
     body: 'Set up your first site, invite your team, and configure domains step by step.',
-    href: '#',
+    href: '/resources/docs',
   },
   {
     icon: <Code2 className="size-5" />,
     title: 'API reference',
     body: 'Every endpoint for posts, authors, categories, and search — with examples.',
-    href: '#',
+    href: '/resources/api',
   },
   {
     icon: <FileText className="size-5" />,
     title: 'Guides',
     body: 'Practical playbooks for migrating, scheduling, and scaling your publishing.',
-    href: '#',
+    href: '/resources/guides',
   },
   {
     icon: <Rss className="size-5" />,
     title: 'Changelog',
     body: 'What shipped recently, from new API fields to dashboard improvements.',
-    href: '#',
+    href: '/resources/changelog',
   },
   {
     icon: <Newspaper className="size-5" />,
     title: 'Blog',
     body: 'Ideas on content operations, headless publishing, and building with BlogInt.',
-    href: '#',
+    href: '/resources/blog',
   },
   {
     icon: <LifeBuoy className="size-5" />,
@@ -118,7 +118,7 @@ export default async function ResourcesPage({
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {POSTS.map((p) => (
-              <article key={p.title} className="group cursor-pointer">
+              <Link key={p.title} href={localeHref(locale, '/resources/blog')} className="group">
                 <div className="flex aspect-[16/10] items-end overflow-hidden rounded-2xl bg-gradient-to-br from-primary/25 to-neutral-900/80 p-5">
                   <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-neutral-800">
                     {p.tag}
@@ -128,7 +128,7 @@ export default async function ResourcesPage({
                   {p.title}
                 </h3>
                 <p className="mt-1 text-sm text-neutral-500">{p.date}</p>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
